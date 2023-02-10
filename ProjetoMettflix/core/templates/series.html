@@ -1,0 +1,64 @@
+{% block content %} {% load static %}
+<section id="menu">
+  <h2>Séries</h2>
+  <div class="obras">
+    {% for serie in series %}
+    <!-- obra -->
+    {% if serie.ativo %}
+    <div class="obra">
+      <a href="{% url 'obra' serie.slug %}" target="_blank">
+        <img
+          src="{{serie.imagem.url}}"
+          alt="Imagem do serie {{serie.titulo}}"
+        />
+      </a>
+      <div class="detalhes">
+        <a href="{% url 'obra' serie.slug %}" target="_blank">
+          <p class="detalhes-titulo">{{serie.titulo}}</p>
+        </a>
+        <div class="form">
+          <form
+            action="{% url 'like' serie.id%}"
+            method="post"
+            id="form-butt-p"
+          >
+            {% csrf_token %}
+            <button type="submit" class="btnlike">
+              <img src="{% static 'img/polegar.png'%}" style="width: 1.5rem" />
+            </button>
+            <p>{{serie.like}}</p>
+          </form>
+          <form
+            action="{% url 'dislike' serie.id%}"
+            method="post"
+            class="form-butt-p"
+          >
+            {% csrf_token %}
+            <button type="submit" class="btndislike">
+              <img src="{% static 'img/deslike.png'%}" style="width: 1.5rem" />
+            </button>
+            <p>{{serie.deslike}}</p>
+          </form>
+          <form
+            action="{% url 'download' serie.id%}"
+            method="post"
+            class="form-butt-p"
+          >
+            {% csrf_token %}
+            <button type="submit" class="btndislike">
+              <img
+                src="{% static 'img/iconDownload.png'%}"
+                style="width: 1.5rem"
+              />
+            </button>
+            <p>{{serie.download}}</p>
+          </form>
+        </div>
+      </div>
+      <!-- fim obra -->
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

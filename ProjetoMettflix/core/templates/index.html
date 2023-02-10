@@ -1,0 +1,19 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+
+{% block content %} 
+
+{% include 'home.html' %}
+
+<div class="page">
+
+
+
+<section id="conteudo">
+    {% include 'filmes.html' %}
+    {% include 'series.html' %}
+</section>
+
+</div>
+{% endblock %}

@@ -1,0 +1,64 @@
+{% block content %} {% load static %}
+<section id="menu">
+  <h2>Filmes</h2>
+  <div class="obras">
+    {% for filme in filmes %}
+    <!-- obra -->
+    {% if filme.ativo %}
+    <div class="obra">
+      <a href="{% url 'obra' filme.slug %}" target="_blank">
+        <img
+          src="{{filme.imagem.url}}"
+          alt="Imagem do filme {{filme.titulo}}"
+        />
+      </a>
+      <div class="detalhes">
+        <a href="{% url 'obra' filme.slug %}" target="_blank">
+          <p class="detalhes-titulo">{{filme.titulo}}</p>
+        </a>
+        <div class="form">
+          <form
+            action="{% url 'like' filme.id%}"
+            method="post"
+            id="form-butt-p"
+          >
+            {% csrf_token %}
+            <button type="submit" class="btnlike">
+              <img src="{% static 'img/polegar.png'%}" style="width: 1.5rem" />
+            </button>
+            <p>{{filme.like}}</p>
+          </form>
+          <form
+            action="{% url 'dislike' filme.id%}"
+            method="post"
+            class="form-butt-p"
+          >
+            {% csrf_token %}
+            <button type="submit" class="btndislike">
+              <img src="{% static 'img/deslike.png'%}" style="width: 1.5rem" />
+            </button>
+            <p>{{filme.deslike}}</p>
+          </form>
+          <form
+            action="{% url 'download' filme.id%}"
+            method="post"
+            class="form-butt-p"
+          >
+            {% csrf_token %}
+            <button type="submit" class="btndislike">
+              <img
+                src="{% static 'img/iconDownload.png'%}"
+                style="width: 1.5rem"
+              />
+            </button>
+            <p>{{filme.download}}</p>
+          </form>
+        </div>
+      </div>
+      <!-- fim obra -->
+    </div>
+    {% endif %} {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

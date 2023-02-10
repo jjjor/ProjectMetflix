@@ -1,0 +1,71 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metflix</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/menu.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/obra.css' %}">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" type="image/png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <div class="part-one">
+            <a href="{% url 'index' %}" class="logo"><img src="{% static 'img/logo.png' %}"></a>
+            <ul class="navigation" style="margin-bottom: 0px;">
+                <li><a href="{% url 'index' %}">Início</a></li>
+                <li><a href="#conteudo">Filmes</a></li>
+                <li><a href="#series">Séries</a></li>
+                <li><a href="{% url 'index' %}">Lançamentos</a></li>
+                <li><a href="{% url 'index' %}">Favoritos</a></li>
+            </ul>
+            <!-- <div class="search">
+                <input type="text" placeholder="Buscar">
+                <i class="fas fa-search"></i>
+            </div> -->
+            {% if user.is_anonymous %}
+            <div class="login-register">
+                <p class="register">
+                   <a href="loginconta">Login</a> 
+                </p>
+                <p class="register">
+                    <a href="{% url 'cadastro' %}">Cadastrar</a>
+                </p>
+            </div>
+            {% endif %}
+            
+            {% if user.is_authenticated %}
+            <!-- <div class="profile"> -->
+            <div class="login-register">
+                <p class="register">
+                    <a href="#">Meu Perfil</a>
+                </p>
+            </div>
+            <!-- </div> -->
+            {% endif %}
+
+        </div>
+        <div class="part-two">
+            <div class="search">
+                <input type="text" placeholder="Buscar">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+    </header>
+    {% block content %} 
+    
+
+
+    {% endblock %}
+
+</body>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="https://yagasaki7k.github.io/custom-scripts/font-awesome.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+</html>

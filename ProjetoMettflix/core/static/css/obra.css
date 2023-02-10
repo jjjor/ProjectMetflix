@@ -1,0 +1,44 @@
+.containerobra {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image:url('https://i.pinimg.com/originals/22/2b/8e/222b8e6849b3a3a66c0bb7002b0e4603.jpg') ;
+  width: 100%;
+}
+.contentobra {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 200px;
+}
+
+.contentobra > img {
+  width: 256px;
+  border-radius: 0.5rem;
+}
+
+.textos {
+  margin-top: 24px;
+  color: white;
+}
+.contentobra a {
+  text-decoration: none;
+  background-color: rgba(56, 56, 233, 0.904);
+  color: white;
+  border-radius: 0.3rem;
+  padding: 8px;
+}
+.contentobra > a > img{
+  width: 20px;
+}
+
+.contentobra a:hover {
+  text-decoration: none;
+  background-color: red;
+  border-radius: 0.3rem;
+  color: white;
+  padding: 8px;
+  transition: 0.5s;
+  cursor: pointer;
+}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<div class="trailer">
+  <video src="{% static 'img/brasino.mp4'%}" controls="true"></video>
+  <img
+    src="{% static 'img/close.png' %}"
+    class="close"
+    onclick="toggleVideo()"
+  />
+</div>
+<div class="containerobra">
+  <div class="contentobra">
+    <img
+      src="{{ object.imagem.url }}"
+      alt="Imagem do filme {{ object.titulo }}"
+    />
+    <div class="textos">
+      <h1>{{ object.titulo }}</h1>
+      <p>{{ object.diretor }}</p>
+      <p>{{ object.genero }}</p>
+      <p>Atualmente tem {{ object.like }} likes e {{ object.deslike }}</p>
+    </div>
+    <a href="{{object.link}}">Assistir</a>
+    <a onclick="toggleVideo()" style="width: 246px; height: 40px; color: white; margin:1rem 1rem;; cursor: pointer;"
+      >Anúncio dos Patrocinadores</a
+    >
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cadastrar Metflix</title>
+    <link rel="stylesheet" href="{% static 'css/siginUp.css'%}" />
+
+  </head>
+  <body>
+    <div class="signupFrm">
+      <form  class="form" method="post" action="{% url 'fazercasdastro' %}">
+        {% csrf_token %}
+
+        <h1 class="title">Cadastro</h1>
+
+        <div class="inputContainer">
+          <input type="text" class="input" placeholder="a" name="email" />
+          <label for="" class="label">E-mail</label>
+        </div>
+
+        <div class="inputContainer">
+          <input type="text" class="input" placeholder="a" name="nome" />
+          <label for="" class="label">Usuário</label>
+        </div>
+
+        <div class="inputContainer">
+          <input type="text" class="input" placeholder="a" name="senha" />
+          <label for="" class="label">Senha</label>
+        </div>
+
+        <div class="inputContainer">
+          <input type="text" class="input" placeholder="a" name="passconf" />
+          <label for="" class="label">Confirme a Senha</label>
+        </div>
+
+        <button type="submit" class="btndislike" style="border-radius:0.5rem; border:none; color:white; background-color:#9b111e; padding: 5px;">
+         Cadastrar
+        </button>
+        <a
+          type="submit"
+          style="
+            border: none;
+            border-radius: 0.5rem;
+            background: transparent;
+          "
+          href="{% url 'index' %}"
+          >Voltar para Home</a
+        >
+      </form>
+    </div>
+  </body>
+</html>
